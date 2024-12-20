@@ -1,0 +1,109 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+header{
+  display:flex;
+  justify-content: space-between;
+  gap:1rem;
+  align-items: center;
+}
+
+main{
+  display: flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.benefits-list{
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+}
+
+.benefits-list h3{
+  padding-bottom:0.5rem;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column; /* Stack image, title, and button vertically */
+  align-items: center; /* Center the content horizontally */
+  width: 200px; /* Set a fixed width for the card */
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1a1a1a; /* Example background */
+  padding: 0.5rem;
+}
+
+.movie-card img{
+  border-bottom:white 2px solid;
+  height:300px;
+  width:100%
+}
+
+.movie-card button{
+  margin-top:1rem;
+}
+
+.results-container{
+  display:grid;
+  grid-template-columns:auto auto auto;
+  gap:1rem;
+  margin-top:10px;
+}
+
+.search-section{
+  display:flex;
+  gap:2rem;  
+  padding:0 3rem;
+}
+
+.movie-form-heading{
+  margin-left: auto;
+  margin-right:auto;
+}
+
+.info-section{
+  text-align: center;
+}
+
+.selectable-options{
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+table,tr,td,th{
+  width:100%;
+  margin:auto;
+}
+
+.delete{
+  background-color:#d11a2a;
+  color:#1a1a1a;
+  border-color:transparent;
+}
+
+.movie-add-msg{
+  border: solid grey 2px;
+  padding:2rem;
+  text-align: center;
+}
+
+.movie-add-msg h2{
+  margin: auto;
+}
+
+.movie-add-msg p{
+  text-align: center;
+}
+
