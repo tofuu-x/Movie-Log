@@ -34,12 +34,12 @@ export default function List(){
       let firebaseData={}
       if(docSnap.exists()){
         firebaseData=docSnap.data()
-        console.log('Found user data')
+        // console.log('Found user data')
       }
       setGlobalData(firebaseData)
-    } catch(err){
-      console.log(err)
-    }
+      } catch(err){
+        // console.log(err)
+      }
 
     }catch(err){
       console.log(err.message)
