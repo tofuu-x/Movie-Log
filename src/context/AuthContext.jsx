@@ -22,7 +22,9 @@ export function AuthProvider(props){
   }
 
   function signIn(email,password){
+
     return signInWithEmailAndPassword(auth,email,password)
+    
   }
 
   function logOut(){
@@ -35,7 +37,7 @@ export function AuthProvider(props){
 
   useEffect(()=>{
     const unsubscribe=onAuthStateChanged(auth,async (user)=>{
-      console.log('Current User:',user)
+
       setGlobalUser(user)
 
       //if there is no user
@@ -55,7 +57,7 @@ export function AuthProvider(props){
           console.log('Found user data')
         }
         setGlobalData(firebaseData)
-        console.log(globalData)
+        
       } catch(err){
         console.log(err)
       }

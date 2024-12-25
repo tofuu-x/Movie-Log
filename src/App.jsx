@@ -2,8 +2,7 @@ import Layout from './components/Layout'
 import Hero from './components/Hero'
 import MovieForm from './components/MovieForm'
 import List from './components/List'
-import { MovieListProvider } from './context/MovieContext'
-import { AuthProvider, useAuth } from './context/AuthContext'
+import {useAuth } from './context/AuthContext'
 
 function App() {
   const {globalUser}=useAuth();
@@ -17,14 +16,14 @@ function App() {
   )
 
   return(
-    <MovieListProvider>
+    
       <Layout>
         <Hero/>
         <MovieForm/>
         <hr/>
         {(isAuthenticated)&& authenticatedContent}
       </Layout>
-    </MovieListProvider>
+
       
   )
 }

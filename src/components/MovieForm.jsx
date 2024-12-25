@@ -1,6 +1,5 @@
 import { useState,useEffect,useRef } from "react"
 import { searchMovies } from "../services/api";
-import { useMovie } from "../context/MovieContext";
 import { useAuth } from "../context/AuthContext";
 import Modal from "./Modal";
 import Authentication from "./Authentication";
@@ -10,7 +9,6 @@ import { db } from "../../firebase";
 function MovieCard(props){
   const [showModal, setShowModal] = useState(false)
   const {movie,setMessage,hideMessage,setShowResults}=props
-  const {addToList,movieList}=useMovie();
   const {globalUser,globalData,setGlobalData}=useAuth()
 
 
@@ -31,7 +29,7 @@ function MovieCard(props){
 
       newGlobalData[movie.id]=newData;
       setGlobalData(newGlobalData)
-
+      
       //persist the data in the firebase firestore
       const userRef=doc(db,'users',globalUser.uid)
       const res=await setDoc(userRef,{[movie.id]:newData},{merge:true})
@@ -45,7 +43,7 @@ function MovieCard(props){
   function handleCloseModal(){
     setShowModal(false)
   }
-
+  
   return(
     <>
     {showModal && (
@@ -59,7 +57,7 @@ function MovieCard(props){
       <div className="info-section">
         <h4>{movie.title}</h4>
         <button onClick={()=>{
-          if(movieList.some((m)=>m.id===movie.id)){
+          if((globalData[String(movie.id)])){
             setMessage(" ⚠️ Movie already in the list")
             hideMessage()
             
@@ -116,7 +114,6 @@ export default function MovieForm(){
         throw new Error('⚠️ No movies Found')
       };
       setMovie(searchResult)
-      console.log(movie)
     }catch(e){
       setError(e.message)
       setMessage(e.message)

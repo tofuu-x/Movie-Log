@@ -1,12 +1,10 @@
 import { useAuth } from "../context/AuthContext";
-import { useMovie } from "../context/MovieContext"
 import { doc, getDoc, updateDoc, deleteField } from "firebase/firestore";
 import { db } from "../../firebase";
-import { useState } from "react";
+
 
 
 export default function List(){
-  const {movieList,removeFromList}=useMovie();
   const {globalData,globalUser,setGlobalData}=useAuth()
   const listHeader=(
     <h1>Movie Hisotry</h1>
@@ -39,7 +37,6 @@ export default function List(){
         console.log('Found user data')
       }
       setGlobalData(firebaseData)
-      console.log(globalData)
     } catch(err){
       console.log(err)
     }
@@ -51,10 +48,10 @@ export default function List(){
   }
 
   const movies=Object.keys(globalData)
-  console.log(movies)
 
   return(
     <>
+      <h2 className="text-gradient">My Movie List</h2>
       <table>
         <thead>
           <tr>
@@ -78,7 +75,7 @@ export default function List(){
           
         </tbody>
       </table>
-    
+      <hr/>
     </>
     
   )

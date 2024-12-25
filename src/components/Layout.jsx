@@ -8,7 +8,7 @@ function Layout(props){
   const {globalUser,logOut}=useAuth()
   const [showModal,setShowModal]=useState(false);
 
-  console.log(globalUser)
+  
   const header=(
     <header>
       <div>
@@ -24,7 +24,8 @@ function Layout(props){
   const footer=(
     <footer>
       {/* ADD MORE HERE */}
-      <p>Made by <span className="text-gradient">Adarsha</span></p> 
+      <p>Made by <span className="text-gradient">Adarsha</span></p><br/>
+      <p>//More features coming soon....//</p>
     </footer>
   )
 
@@ -43,7 +44,7 @@ function Layout(props){
       <main>
         {children}
       </main>
-
+      
       {footer}
     </>
   )
