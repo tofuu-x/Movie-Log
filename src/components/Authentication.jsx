@@ -52,7 +52,7 @@ export default function Authetication(props){
       {error && (<p className='firebase-error'>❌ {error}</p>)}
       <input placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)}></input>
       <input type="password" placeholder="********" value={password} onChange={(e)=>setPassword(e.target.value)}/>
-      {isAuthenticating?(<p><h3>Authenticating...</h3></p>):(<button onClick={handleAuthentication}><p>Submit</p></button>)}
+      {isAuthenticating?(<h3>Authenticating...</h3>):(<button onClick={handleAuthentication}><p>Submit</p></button>)}
       <hr/>
       <div className="register-content">
         <p>{isRegistration ? "Already have an account?" : "Don't have an account?"}</p>

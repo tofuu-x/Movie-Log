@@ -9,14 +9,25 @@ import { db } from "../../firebase";
 function MovieCard(props){
   const [showModal, setShowModal] = useState(false)
   const {movie,setMessage,hideMessage,setShowResults}=props
-  const {globalUser,globalData,setGlobalData}=useAuth()
+  const {globalUser,globalData,setGlobalData,setGlobalUser}=useAuth()
 
-
-
-  async function addtoList(movie){
+  const handleAddClick=()=>{
     if(!globalUser){
       setShowModal(true)
+      return
     }
+
+    if((globalData[String(movie.id)])){
+      setMessage(" ⚠️ Movie already in the list")
+      hideMessage()
+      
+      return
+    }
+    addtoList(movie)
+    {setShowResults(false);}
+  }
+
+  async function addtoList(movie){
     
     try{
       const newGlobalData={
@@ -56,17 +67,7 @@ function MovieCard(props){
       <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt="image not available"/>
       <div className="info-section">
         <h4>{movie.title}</h4>
-        <button onClick={()=>{
-          if((globalData[String(movie.id)])){
-            setMessage(" ⚠️ Movie already in the list")
-            hideMessage()
-            
-            return
-          }
-          addtoList(movie)
-          {globalUser && setShowResults(false);}
-          
-          }}>Add</button>
+        <button onClick={handleAddClick}>Add</button>
       </div>
       
       
